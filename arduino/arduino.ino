@@ -1,8 +1,29 @@
 
+Servo gripper;
+Servo wrist;
+Servo elbow;
+Servo shoulder;
+Servo base;
+
+double base_angle=90;
+double shoulder_angle=90;
+double elbow_angle=90;
+double wrist_angle=90;
+
 
 void setup() {
  Serial.begin(115200);
- pinMode(8,OUTPUT);
+   base.attach(8);
+  shoulder.attach(9); 
+  elbow.attach(10);
+  wrist.attach(11);
+  gripper.attach(12); 
+
+    base.write(base_angle);
+  shoulder.write(shoulder_angle);
+  elbow.write(elbow_angle);
+  wrist.write(wrist_angle);
+
 }
 
 
@@ -34,13 +55,20 @@ void loop() {
   // 92-0-130
   String command = getValue(computerText, ' ',0);
 
-    if (command == "on") {
-      digitalWrite(8, HIGH);
+    if (command == "right") {
+      base.write(base_angle - 10);
     }
-    if (command == "off") {
-      digitalWrite(8, LOW);
+    if (command == "left") {
+     base.write(base_angle + 10);
     }
-   
+
+    if (command == "top") {
+      shoulder.write(shoulder_angle - 10);
+    }
+
+   if (command == "bottom") {
+     shoulder.write(shoulder_angle + 10);
+    }
     Serial.println(command);
   Serial.println("WORKING");
   delay(1000);
