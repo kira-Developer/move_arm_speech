@@ -1,4 +1,5 @@
 
+#include <Servo.h>
 Servo gripper;
 Servo wrist;
 Servo elbow;
@@ -56,18 +57,18 @@ void loop() {
   String command = getValue(computerText, ' ',0);
 
     if (command == "right") {
-      base.write(base_angle - 10);
+      base.write(base_angle -= 10);
     }
     if (command == "left") {
-     base.write(base_angle + 10);
+     base.write(base_angle += 10);
     }
 
     if (command == "top") {
-      shoulder.write(shoulder_angle - 10);
+      shoulder.write(shoulder_angle -= 10);
     }
 
    if (command == "bottom") {
-     shoulder.write(shoulder_angle + 10);
+     shoulder.write(shoulder_angle += 10);
     }
     Serial.println(command);
   Serial.println("WORKING");
