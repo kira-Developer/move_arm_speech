@@ -1,4 +1,4 @@
-
+// by \x6b\x69\x72\x61
 #include <Servo.h>
 Servo gripper;
 Servo wrist;
@@ -20,7 +20,7 @@ void setup() {
   wrist.attach(11);
   gripper.attach(12); 
 
-    base.write(base_angle);
+  base.write(base_angle);
   shoulder.write(shoulder_angle);
   elbow.write(elbow_angle);
   wrist.write(wrist_angle);
