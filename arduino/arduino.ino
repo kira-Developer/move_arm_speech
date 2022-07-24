@@ -56,7 +56,7 @@ void loop() {
   // 92-0-130
   String command = getValue(computerText, ' ',0);
 
-    if (command == "right" || command == "رايت" || command == "right") {
+    if (command == "right" || command == "رايت" || command == "Right") {
       base.write(base_angle -= 20);
     }
     if (command == "left" || command == "Left" || command == "لفت") {
@@ -67,8 +67,8 @@ void loop() {
       shoulder.write(shoulder_angle -= 20);
     }
 
-   if (command == "bottom"|| command == "بوتوم" || command == "bottom") {
-     shoulder.write(shoulder_angle += 10);
+   if (command == "bottom"|| command == "بوتوم" || command == "Bottom") {
+     shoulder.write(shoulder_angle += 20);
     }
     Serial.println(command);
   Serial.println("WORKING");
