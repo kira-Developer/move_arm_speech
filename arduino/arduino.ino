@@ -1,6 +1,6 @@
-// by \x6b\x69\x72\x61
 #include <Servo.h>
-Servo gripper;
+
+ Servo gripper;
 Servo wrist;
 Servo elbow;
 Servo shoulder;
@@ -10,6 +10,7 @@ double base_angle=90;
 double shoulder_angle=90;
 double elbow_angle=90;
 double wrist_angle=90;
+
 
 
 void setup() {
@@ -27,33 +28,13 @@ void setup() {
 
 }
 
-
-
-String getValue(String data, char separator, int index)
-{
-  int found = 0;
-  int strIndex[] = {0, -1};
-  int maxIndex = data.length()-1;
-
-  for(int i=0; i<=maxIndex && found<=index; i++){
-    if(data.charAt(i)==separator || i==maxIndex){
-        found++;
-        strIndex[0] = strIndex[1]+1;
-        strIndex[1] = (i == maxIndex) ? i+1 : i;
-    }
-  }
-
-  return found>index ? data.substring(strIndex[0], strIndex[1]) : "";
-}
-
 void loop() {
-  
-  String computerText = Serial.readStringUntil('@');
+ String computerText = Serial.readStringUntil('@');
   computerText.trim();
   if (computerText.length() == 0) {
     return;
   }
-  // 92-0-130
+  
   String command = getValue(computerText, ' ',0);
 
     if (command == "right" || command == "رايت" || command == "Right") {
@@ -73,5 +54,24 @@ void loop() {
     Serial.println(command);
   Serial.println("WORKING");
   delay(1000);
+}
 
+
+
+
+
+String getValue(String data, char separator, int index){
+  int found = 0;
+  int strIndex[] = {0, -1};
+  int maxIndex = data.length()-1;
+
+  for(int i=0; i<=maxIndex && found<=index; i++){
+    if(data.charAt(i)==separator || i==maxIndex){
+        found++;
+        strIndex[0] = strIndex[1]+1;
+        strIndex[1] = (i == maxIndex) ? i+1 : i;
+    }
+  }
+
+  return found>index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
