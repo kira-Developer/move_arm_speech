@@ -1,6 +1,6 @@
 #include <Servo.h>
 
- Servo gripper;
+Servo gripper;
 Servo wrist;
 Servo elbow;
 Servo shoulder;
